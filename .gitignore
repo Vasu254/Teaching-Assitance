@@ -62,4 +62,7 @@ dist/
 # Jupyter
 .ipynb_checkpoints
 
+# Promptfoo configuration
+promptfoo.yaml
+
 
