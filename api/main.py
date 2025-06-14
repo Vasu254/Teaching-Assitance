@@ -34,7 +34,7 @@ request_timestamps = deque()
 
 def load_embeddings():
     """Load embeddings and metadata from NPZ file."""
-    data = np.load("../data_source/embedded_chunks.npz", allow_pickle=True)
+    data = np.load("../data_source/main.npz", allow_pickle=True)
     return data["embeddings"], data["metadata"]
 
 
@@ -105,7 +105,6 @@ async def ask(request: QueryRequest):
 
         # Combine query and image text
         full_query = f"{query_text} {image_text}".strip()
-
         # Get query embedding and find similar documents
         query_embedding = get_embedding(full_query)
         similarities = np.dot(embeddings, query_embedding)
@@ -117,7 +116,7 @@ async def ask(request: QueryRequest):
         for idx in top_indices:
             doc = metadata[idx]
             doc_tokens = len(doc["text"].split()) * 1.3  # Rough token estimate
-            if total_tokens + doc_tokens > 700:
+            if total_tokens + doc_tokens > 500:
                 break
             context_docs.append(doc)
             total_tokens += doc_tokens
@@ -133,7 +132,7 @@ async def ask(request: QueryRequest):
         api_key = os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY")
         client = genai.Client(api_key=api_key)
 
-        prompt = f"Context:\n{context}\n\nQuestion: {full_query}\n\nProvide a helpful answer with relevant links."
+        prompt = f"Context:\n{context}\n\nQuestion: {full_query}\n\n You are a knowledgeable virtual teaching assistant for the Tools for Data Science (TDS) course."
         response = client.models.generate_content(
             model="gemini-2.0-flash", contents=[prompt]
         )

@@ -2,7 +2,8 @@ import json
 import re
 import tiktoken
 
-tokenizer = tiktoken.get_encoding("cl100k_base")
+tokenizer = tiktoken.encoding_for_model("text-embedding-3-small")
+
 MAX_TOKENS = 500
 OVERLAP = 30
 
