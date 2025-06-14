@@ -1,0 +1,65 @@
+# Python
+.venv
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Environment variables
+.env
+*.key
+*token*
+
+# Data files
+cookie.json
+*.json
+*.jsonl
+*.csv
+*.txt
+*.log
+
+# Images
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.webp
+*.svg
+
+
+.pytest_cache/
+.coverage
+*.cover
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+
+# Promptfoo cache
+.promptfoo/
+
+# Large model files
+*.pkl
+*.model
+*.bin
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# Jupyter
+.ipynb_checkpoints
+
+
