@@ -65,16 +65,13 @@ tds-ta/
    ```bash
    cp .env.example .env
    # Edit .env with your API keys
-   ```
+   ``
 
 4. **Required API Keys**:
    - `OPENAI_API_KEY`: OpenAI API access
    - `GEMINI_API_KEY`: Google Gemini API access
-
 ## 🎯 Usage
-
 ### Running the API Server
-
 ```bash
 cd api
 python main.py
